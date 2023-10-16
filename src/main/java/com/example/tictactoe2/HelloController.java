@@ -1,8 +1,5 @@
 package com.example.tictactoe2;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -12,17 +9,11 @@ import javafx.scene.layout.GridPane;
 
 public class HelloController {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
     private char nowSymb = 'X';
 
     private boolean isGame = true;
 
-    private char gameField[][] = new char[3][3]; // ігрове поле
+    private final char[][] gameField = new char[3][3]; // ігрове поле
 
     @FXML
     void btClick(ActionEvent event) { // логіка кнопки, event обьект з яким працюємо
