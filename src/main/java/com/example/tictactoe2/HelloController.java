@@ -13,6 +13,8 @@ public class HelloController {
 
     private boolean isGame = true;
 
+    private int count = 0;
+
     private final char[][] gameField = new char[3][3]; // ігрове поле
 
     @FXML
@@ -34,6 +36,7 @@ public class HelloController {
 
         // логіка пошуку переможця
         // якщо перша ячейка рівна другій і перша рівна третій і перша ячейка не порожня
+
         if (gameField[0][0] == gameField[0][1] && gameField[0][0] == gameField[0][2]
                 && (gameField[0][0] == 'X' || gameField[0][0] == '0')) {
             messageShowing(event);
@@ -66,17 +69,28 @@ public class HelloController {
                 && (gameField[0][2] == 'X' || gameField[0][2] == '0')) {
             messageShowing(event);
             isGame = false;
+        } else if(isGame==true&&count==8){
+            drawMessage(event);
         }
-
 
         // логіка по зміні X i 0 кожне натиснення -  новий символ
         nowSymb = nowSymb == 'X' ? '0' : 'X';
+        count++;
     }
 
     // метод для виведення сповіщення про переможця
     public Alert messageShowing(ActionEvent event) {
         Button btn = ((Button) event.getSource());
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "We have the  winner, congratulations! - " + btn.getText(), ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "We have the  winner, congratulations! - " + btn.getText(), ButtonType.OK);
+        alert.showAndWait();
+        return alert;
+    }
+
+    public Alert drawMessage(ActionEvent event) {
+        Button btn = ((Button) event.getSource());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Congratulations! Draw, play again! " , ButtonType.OK);
         alert.showAndWait();
         return alert;
     }
