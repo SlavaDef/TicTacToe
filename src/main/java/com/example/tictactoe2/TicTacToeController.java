@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 
-public class HelloController {
+public class TicTacToeController {
 
     private char nowSymb = 'X';
 
@@ -92,6 +92,8 @@ public class HelloController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "Congratulations! Draw, play again! " , ButtonType.OK);
         alert.showAndWait();
+
+
         return alert;
     }
 
